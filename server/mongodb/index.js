@@ -5,7 +5,7 @@ export default async function connectDB() {
 
     await mongoose
         .connect(process.env.MONGO_DB, {
-            dbName: process.env.DB_NAME,
+            dbName: process.env.DB_URL,
         })
         .catch((e) => {
             console.error("Error connecting to database.");

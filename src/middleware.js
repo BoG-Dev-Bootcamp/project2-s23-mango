@@ -1,9 +1,11 @@
-import checkMethod from "../server/utils/checkMethod"
 import { NextResponse } from "next/server"
 
-export function middleware(req) {
-    if (req.nextUrl.pathname.startsWith('/api/newFarm')) {
-        return checkMethod(req)
+export default function checkMethod(req) {
+    if (req.method != 'POST') {
+        return new NextResponse(
+            JSON.stringify({ success: false, error: "Invalid request method: " + req.method }),
+            { status: 400 }
+        )
     }
     return NextResponse.next()
-}
+} 

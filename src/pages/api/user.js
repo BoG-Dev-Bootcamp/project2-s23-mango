@@ -1,17 +1,12 @@
-import User from "../../../server/mongodb/models/user"
-import connectDB from "../../../server/mongodb/index"
 import createUser from "../../../server/mongodb/actions/createUser"
+import checkMethod from "@/middleware"
 
 export default async function handler(req, res) {
-    if (req.method == 'POST') {
-        const userData = req.body
-
-        connectDB()
-        const user = new User({ userData})
-        await user.save()
-
-        return res.status(200).send("New user created")
+    checkMethod(req)
+    try {
+        await createUser(req.body)
+    } catch(e) {
+        return res.status(500).json({success: false, message: e.message})
     }
-    return res.status(400).send("Incorrect req method type")
-
+    return res.status(200).send("New user created")
 }

@@ -19,3 +19,5 @@ const closeDB = async () => {
     await mongoose.connection.close();
     console.log("Connection Closed.");
 }
+
+export { connectDB, closeDB}

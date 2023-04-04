@@ -1,5 +1,6 @@
-import createUser from "../../../server/mongodb/actions/createUser"
 import checkMethod from "@/middleware"
+import createUser from "../../../server/mongodb/actions/createUser"
+
 
 export default async function handler(req, res) {
     checkMethod(req)

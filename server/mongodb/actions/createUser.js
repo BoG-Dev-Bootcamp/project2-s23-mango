@@ -3,6 +3,7 @@ import User from "../models/user"
 
 export default async function createUser(userData) {
     await connectDB()
+    console.log(userData)
     try {
         console.log("INSIDE OF TRY")
         const user = new User(userData)

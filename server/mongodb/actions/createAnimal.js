@@ -8,7 +8,7 @@ export default async function createAnimal(animalData) {
         await animal.save()
     } catch (e) {
         console.log(e)
-        throw new Error("Unable to create farm. Invalid data")
+        throw new Error("Unable to create animal. Invalid data")
     }
 }
 

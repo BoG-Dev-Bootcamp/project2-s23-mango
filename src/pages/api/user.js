@@ -1,9 +1,8 @@
-import checkMethod from "@/middleware"
 import createUser from "../../../server/mongodb/actions/createUser"
 
 
 export default async function handler(req, res) {
-    checkMethod(req)
+    //checkMethod(req)
     try {
         await createUser(req.body)
     } catch(e) {

@@ -12,10 +12,10 @@ const animalSchema = new mongoose.Schema ({
         type: Number,
         required: true
     }, 
-    // owner: {
-    //     type: mongoose.Schema.Types.ObjectID,
-    //     required: true
-    // }, 
+    owner: {
+        type: mongoose.Schema.Types.ObjectID,
+        required: true
+    }, 
     dateOfBirth: {
         type: Date
     }, profilePicture: {

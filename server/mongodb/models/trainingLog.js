@@ -21,7 +21,7 @@ const trainingLogSchema = new mongoose.Schema({
     trainingLogVideo: {
         type: String,
         required: false
-    }
+    },
     description: {
         type: String,
         required: true

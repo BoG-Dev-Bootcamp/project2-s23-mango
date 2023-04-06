@@ -1,11 +1,8 @@
 import { NextResponse } from "next/server"
 
-export default function checkMethod(req) {
-    if (req.method != 'POST') {
-        return new NextResponse(
-            JSON.stringify({ success: false, error: "Invalid request method: " + req.method }),
-            { status: 400 }
-        )
+export default function checkMethod(req, allowedMethods) {
+    if (!(allowedMethods.includes(req.method))) {
+        return res.status(400)
     }
     return NextResponse.next()
 } 

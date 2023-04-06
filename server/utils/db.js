@@ -1,8 +1,4 @@
-import mongoose from "mongoose";
-import * as dotenv from 'dotenv'
-
-dotenv.config()
-
+import * as mongoose from "mongoose";
 
 mongoose.set('strictQuery', false);
 
@@ -20,4 +16,4 @@ const closeDB = async () => {
     console.log("Connection Closed.");
 }
 
-export { connectDB, closeDB}
+export {connectDB, closeDB}

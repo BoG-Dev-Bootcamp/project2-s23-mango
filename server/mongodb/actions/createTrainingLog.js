@@ -7,6 +7,7 @@ export default async function createLog(logData) {
         console.log("INSIDE OF TRY")
         console.log(logData)
         const log = new Training(logData)
+        console.log(log);
         await log.save()
     } catch (e) {
         console.log("in catch")

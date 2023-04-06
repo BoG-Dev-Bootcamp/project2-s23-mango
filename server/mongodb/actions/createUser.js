@@ -1,4 +1,4 @@
-import connectDB from "../index"
+import connectDB from "../index.js"
 import User from "../models/user"
 
 export default async function createUser(userData) {
@@ -10,7 +10,8 @@ export default async function createUser(userData) {
         console.log(user)
         await user.save()
     } catch (e) {
-        console.log(e.message)
+        console.log("In catch")
         throw new Error("Unable to create user. Invalid data")
     }
+    await closeDB()
 }

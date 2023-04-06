@@ -4,6 +4,7 @@ import Animal from "../models/animal.js"
 export default async function createAnimal(animalData) {
     await connectDB()
     try {
+        console.log("try")
         const animal = new Animal(animalData)
         await animal.save()
     } catch (e) {

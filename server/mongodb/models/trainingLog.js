@@ -3,25 +3,24 @@ import mongoose from "mongoose"
 const trainingLogSchema = new mongoose.Schema({
     date: {
         type: Date,
-        required: false
+        //required: true
     },
    
     hours: {
         type: Number,
-        required: false
+        //required: true
     },
     animal: {
         type: mongoose.Schema.Types.ObjectId,
-        required: false
+       // required: true
     },
     user: {
         type: mongoose.Schema.Types.ObjectId,
-        required: false
+        //required: true
     },
     trainingLogVideo: {
-        type: String,
-        required: false
-    }
+       // type: String
+    },
     description: {
         type: String,
         required: true

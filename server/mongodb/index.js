@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import * as mongoose from "mongoose"; // changed this to *
 // import dotenv from "dotenv";
 
 // dotenv.config();
@@ -8,9 +8,6 @@ export default async function connectDB() {
     console.log(process.env.DB_URL)
 
     await mongoose
-        .connect(process.env.DB_URL, {
-            dbName: process.env.DB_NAME,
-        })
         .connect(process.env.DB_URL)
         .catch((e) => {
             console.error("Error connecting to database.");

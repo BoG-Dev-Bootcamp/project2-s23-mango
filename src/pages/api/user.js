@@ -1,4 +1,3 @@
-import checkMethod from "@/middleware"
 import createUser from "../../../server/mongodb/actions/createUser"
 import checkMethod from "../../../server/utils/checkMethod"
 

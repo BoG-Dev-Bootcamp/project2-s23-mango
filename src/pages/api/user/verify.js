@@ -1,0 +1,15 @@
+
+export default async function handler(req, res) {
+    if(loginUser(req)) {
+        const token = sign({ admin: true }, process.env.SECRET, { expiresIn: '60s' })
+
+        const serialized = serialize("OurJWT", token, {
+            httpOnly: true,
+            secure: false,
+            sameSite: "strict",
+            maxAge: 600,
+        });
+        res.setHeader('Set-Cookie', serialized)
+        res.status(200).send("JWT Created! " + token)
+    }
+}

@@ -12,3 +12,4 @@ export default async function readAnimal() {
         return []
     }
 }
+export {readAnimal}

@@ -4,13 +4,15 @@ import User from "../models/user"
 export default async function loginUser(userData) {
     await connectDB()
     try {
-        // console.log(userData)
-        const attemp = await User.find()
-        // console.log(attemp)
+        const password = userData.password
+        const userEmail = {email: userData.email}
+        const attemp = await User.findOne(userEmail)
         const users = await User.count(userData)
         await closeDB()
         if (users > 0) {
-            return true
+            if (attemp.password == password) {
+                return true
+            }
         } else {
             return false
         }

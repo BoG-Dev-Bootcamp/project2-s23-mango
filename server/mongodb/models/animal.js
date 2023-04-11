@@ -1,27 +1,29 @@
 import mongoose from "mongoose"
 
 const animalSchema = new mongoose.Schema ({
-    _id: {
-        type: mongoose.Schema.Types.ObjectId,
-        required: true
-    }, 
     name: {
         type: String,
         required: true
-    }, hoursTrained: { 
+    }, 
+    hoursTrained: { 
         type: Number,
-        required: true
+        required: false
     }, 
     owner: {
         type: mongoose.Schema.Types.ObjectID,
-        required: true
+        required: false
     }, 
     dateOfBirth: {
-        type: Date
-    }, profilePicture: {
-        type: String
+        type: Date,
+        required: false
+    }, 
+    profilePicture: {
+        type: String,
+        required: false
     }
   })
 
   export default mongoose.models?.Animal || mongoose.model("Animal", animalSchema)
+
+  //made required false for testing purposes -- deleted id param
 

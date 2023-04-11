@@ -1,4 +1,4 @@
-import connectDB from "../index.js"
+import {connectDB, closeDB} from "../../utils/db"
 import Training from "../models/trainingLog"
 
 export default async function createLog(logData) {
@@ -13,4 +13,5 @@ export default async function createLog(logData) {
         console.log("in catch")
         throw new Error("Unable to create training log. Invalid data")
     }
+    await closeDB()
 }

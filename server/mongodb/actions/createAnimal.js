@@ -1,5 +1,5 @@
-import connectDB from "../index.js"
-import Animal from "../models/animal.js"
+import {connectDB, closeDB} from "../../utils/db"
+import Animal from "../models/animal"
 
 export default async function createAnimal(animalData) {
     await connectDB()
@@ -10,5 +10,6 @@ export default async function createAnimal(animalData) {
         console.log(e)
         throw new Error("Unable to create animal. Invalid data")
     }
+    await closeDB()
 }
 

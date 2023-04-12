@@ -13,7 +13,7 @@ const readUsers = async (pageNumber) => {
         const readTo = objectsPerPage * pageNumber-1
         const skip = await User.find({}, "_id").limit(readTo-2) //new
         const minId = skip[skip.length-1]._id
-       // console.log(users) commented out
+
         const users = await User.find({_id: { $gt: minId }}, "_id firstName lastName").limit(objectsPerPage) //new
         return users
     } catch(e) { 

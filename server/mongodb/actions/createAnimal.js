@@ -1,6 +1,7 @@
 import {connectDB, closeDB} from "../../utils/db"
 import Animal from "../models/animal"
 
+
 export default async function createAnimal(animalData) {
     await connectDB()
     try {

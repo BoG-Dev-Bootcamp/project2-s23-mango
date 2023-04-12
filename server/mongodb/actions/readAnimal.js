@@ -2,6 +2,7 @@ import {connectDB, closeDB} from "../../utils/db"
 import Animal from "../models/animal"
 
 
+
 export default async function readAnimal(pageNumber) {
     await connectDB();
     try {

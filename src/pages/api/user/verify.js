@@ -10,9 +10,11 @@ export default async function handler(req, res) {
             httpOnly: true,
             secure: false,
             sameSite: "strict",
-            maxAge: 600,
+            maxAge: 1000,
         });
         res.setHeader('Set-Cookie', serialized)
         res.status(200).send("JWT Created! " + token)
+    } else {
+        res.status(403).send("Unable to verify")
     }
 }

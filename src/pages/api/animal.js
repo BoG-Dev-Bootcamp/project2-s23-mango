@@ -1,12 +1,12 @@
 import createAnimal from "../../../server/mongodb/actions/createAnimal";
 import readAnimal from "../../../server/mongodb/actions/readAnimal";
+import checkMethod from "../../../server/utils/checkMethod"
 
 
 export default async function handler(req, res) {
     try {
-        if (req.method == "POST") {
-            await createAnimal(req.body)
-        } 
+        checkMethod(["POST"], req.method)
+        await createAnimal(req.body)
     } catch (e) {
         return res.status(500).json({success: false, message: e.message})
     }

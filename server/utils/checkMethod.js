@@ -1,8 +1,11 @@
 import { NextResponse } from "next/server"
 
-export default function checkMethod(req, allowedMethods) {
-    if (!(allowedMethods.includes(req.method))) {
-        return res.status(400)
+export default function checkMethod(allowedMethods, method) {
+    if (!(allowedMethods.includes(method))) {
+        return new NextResponse(
+            JSON.stringify({ success: false, error: "The request method is not in allowedMethods" + req.method}),
+            { status: 400 }
+        )
     }
     return NextResponse.next()
-} 
+}

@@ -1,9 +1,8 @@
 import createUser from "../../../server/mongodb/actions/createUser"
 import checkMethod from "../../../server/utils/checkMethod"
 
-
 export default async function handler(req, res) {
-    checkMethod(req, "POST")
+    checkMethod(["POST"], req.method)
     try {
         await createUser(req.body)
     } catch(e) {

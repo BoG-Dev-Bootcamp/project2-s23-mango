@@ -6,6 +6,8 @@ export default async function createUser(userData) {
     await connectDB()
     try {
         console.log("Inside of try")
+        const salt = await bcrypt.genSalt(10)
+        userData.password = await bcrypt.hash(userData.password, salt)
         const user = new User(userData)
         console.log(user)
         await user.save()

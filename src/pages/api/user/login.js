@@ -1,5 +1,5 @@
 import loginUser from "../../../../server/mongodb/actions/loginUser"
-import checkMethod from "../../../server/utils/checkMethod"
+import checkMethod from "../../../../server/utils/checkMethod"
 
 export default async function handler(req, res) {
     try {

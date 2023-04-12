@@ -2,23 +2,21 @@ import { verify } from "jsonwebtoken";
 import createAnimal from "../../../server/mongodb/actions/createAnimal";
 import readAnimal from "../../../server/mongodb/actions/readAnimal";
 import verifyUser from "../../../server/mongodb/actions/verifyUser";
+import checkMethod from "../../../server/utils/checkMethod"
 
 
 export default async function handler(req, res) {
-    if(verifyUser(req, res)) {
+    if(verifyUser(req,res)) {
         try {
-            if (req.method == "POST") {
-                await createAnimal(req.body)
-            } 
+            checkMethod(["POST"], req.method)
+            await createAnimal(req.body)
         } catch (e) {
             return res.status(500).json({success: false, message: e.message})
         }
-        return res.status(201).json({success: true, message: "Successfully created an animal"})
     } else {
         return res.status(403).send("Please login")
     }
 }
-
 
 // - (7) Create a GET endpoint at `/api/admin/animals` which will return all of the animals in the database
 // - (8) Create a GET endpoint at `/api/admin/training` which will return all of the training logs in the database

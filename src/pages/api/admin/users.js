@@ -1,7 +1,6 @@
 import { readUsers } from "../../../../server/mongodb/actions/readUsers"
 import checkMethod from "../../../../server/utils/checkMethod"
 
-
 export default async function handler(req, res) {
     const pageNumber = req.query.page;
     checkMethod(req, "GET")

@@ -1,4 +1,4 @@
-import { readUsers } from "../../../../server/mongodb/actions/readUsers"
+import {readUsers} from "../../../../server/mongodb/actions/readUsers"
 import verifyUser from "../../../../server/mongodb/actions/verifyUser";
 import checkMethod from "../../../../server/utils/checkMethod"
 
@@ -8,7 +8,6 @@ export default async function handler(req, res) {
     if (verifyUser(req, res)){
         try {
             let users = await readUsers(pageNumber)
-            console.log(users)
             return res.status(200).json(users)
         } catch(e) {
             return res.status(500).json({success: false, message: e.message})

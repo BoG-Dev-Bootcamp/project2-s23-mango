@@ -5,13 +5,9 @@ import bcrypt from "bcryptjs"
 export default async function createUser(userData) {
     try {
         console.log("Inside of try")
-        const { firstName, lastName, email, password } = userData
-
         const salt = await bcrypt.genSalt(10)
-        const hash = await bcrypt.hash(password, salt)
-
-        await connectDB()
-        const user = new User({firstName, lastName, email, password})
+        userData.password = await bcrypt.hash(userData.password, salt)
+        const user = new User(userData)
         console.log(user)
         await user.save()
 
